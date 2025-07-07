@@ -113,4 +113,39 @@ Para más detalles sobre Anchor, consulta la [documentación oficial](https://bo
 
 ## Frontend instalación
 cd frontend && npm install @coral-xyz/anchor @solana/web3.js @types/node
+### Frontend installation and usage
+
+The frontend is built with [Vite](https://vitejs.dev/) and React.
+
+#### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v16 or higher recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+#### Installation
+
+1. Go to the frontend directory:
+   ```bash
+   cd front
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+   Or, if you prefer yarn:
+   ```bash
+   yarn install
+   ```
+
+3. (Optional) If you haven't already, install the required Solana and Anchor libraries:
+   ```bash
+   npm install @coral-xyz/anchor @solana/web3.js @types/node
+   ```
+
+
+
+
+
+
 
