@@ -67,5 +67,50 @@ Sistema de gestión de comunidades que permite a los afiliados crear y participa
 1. Aplicacion web que implemente las funcionalidades para el perfil afiliado.
 
 ---
-## Instalación
+
+### Instalación backend
+
+La carpeta `back` contiene el programa de Solana escrito en Rust usando Anchor.
+
+#### Requisitos previos
+
+- Tener instalado [Rust](https://www.rust-lang.org/tools/install)
+- Tener instalado [Solana CLI](https://docs.solana.com/cli/install-solana-cli-tools)
+- Tener instalado [Anchor](https://book.anchor-lang.com/getting_started/installation.html)
+- Tener instalado [Node.js](https://nodejs.org/)
+
+#### Instalación y uso
+
+1. Entra a la carpeta del back:
+   ```bash
+   cd back
+   ```
+
+2. Instala las dependencias de Anchor (si es necesario):
+   ```bash
+   anchor install
+   ```
+
+3. Compila el programa con Anchor:
+   ```bash
+   anchor build
+   ```
+
+4. (Opcional) Levanta un validador local de Solana para pruebas:
+   ```bash
+   solana-test-validator
+   ```
+
+5. Ejecuta los tests del programa:
+   ```bash
+   anchor test --skip-local-validator 
+   ```
+
+Esto compilará el programa, desplegará en el validador local y ejecutará los tests definidos en la carpeta `tests`.
+
+Para más detalles sobre Anchor, consulta la [documentación oficial](https://book.anchor-lang.com/).
+
+
+## Frontend instalación
+cd frontend && npm install @coral-xyz/anchor @solana/web3.js @types/node
 

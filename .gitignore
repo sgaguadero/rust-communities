@@ -32,3 +32,4 @@ test-ledger
 *.lock
 package.json
 tsconfig.json
+package-lock.json

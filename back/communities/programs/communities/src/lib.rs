@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
 
-declare_id!("8CHnERgLd1aTjeog9v5vHRyJtshjHxv8VhaQrdzjR4Yi");
+declare_id!("6Cy6o9mfHJkwN2VrTVGHT6Jp9rhSp88thgEJFTyw2JBi");
 
 #[program]
 pub mod communities {
@@ -145,6 +145,7 @@ pub mod communities {
 
         Ok(())
     }
+
 }
 
 // ------> Structs

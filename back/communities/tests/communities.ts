@@ -482,5 +482,4 @@ describe("communities", () => {
     }
   })
 
-
 });

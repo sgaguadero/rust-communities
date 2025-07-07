@@ -1,18 +1,19 @@
 [toolchain]
 package_manager = "yarn"
+anchor_version = "0.29.0"
 
 [features]
 resolution = true
 skip-lint = false
 
-[programs.localnet]
-communities = "8CHnERgLd1aTjeog9v5vHRyJtshjHxv8VhaQrdzjR4Yi"
+[programs.devnet]
+communities = "6Cy6o9mfHJkwN2VrTVGHT6Jp9rhSp88thgEJFTyw2JBi"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "localnet"
+cluster = "devnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]

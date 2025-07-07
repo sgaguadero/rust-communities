@@ -1,0 +1,371 @@
+{
+  "version": "0.1.0",
+  "name": "communities",
+  "instructions": [
+    {
+      "name": "initializeCommunity",
+      "accounts": [
+        {
+          "name": "community",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "admin",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "joinCommunity",
+      "accounts": [
+        {
+          "name": "membership",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "community",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "member",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "approveMembership",
+      "accounts": [
+        {
+          "name": "community",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "membership",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "admin",
+          "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "createPoll",
+      "accounts": [
+        {
+          "name": "poll",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "community",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "membership",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "creator",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "question",
+          "type": "string"
+        },
+        {
+          "name": "options",
+          "type": {
+            "vec": "string"
+          }
+        },
+        {
+          "name": "endTime",
+          "type": "i64"
+        }
+      ]
+    },
+    {
+      "name": "castVote",
+      "accounts": [
+        {
+          "name": "vote",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poll",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "membership",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "voter",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "optionIndex",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "closePoll",
+      "accounts": [
+        {
+          "name": "poll",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "community",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Community",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "admin",
+            "type": "publicKey"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "memberCount",
+            "type": "u64"
+          },
+          {
+            "name": "totalPolls",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Membership",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "community",
+            "type": "publicKey"
+          },
+          {
+            "name": "member",
+            "type": "publicKey"
+          },
+          {
+            "name": "isApproved",
+            "type": "bool"
+          },
+          {
+            "name": "joinedAt",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Poll",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "community",
+            "type": "publicKey"
+          },
+          {
+            "name": "creator",
+            "type": "publicKey"
+          },
+          {
+            "name": "question",
+            "type": "string"
+          },
+          {
+            "name": "options",
+            "type": {
+              "vec": "string"
+            }
+          },
+          {
+            "name": "voteCounts",
+            "type": {
+              "vec": "u64"
+            }
+          },
+          {
+            "name": "endTime",
+            "type": "i64"
+          },
+          {
+            "name": "totalVotes",
+            "type": "u64"
+          },
+          {
+            "name": "isActive",
+            "type": "bool"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Vote",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "poll",
+            "type": "publicKey"
+          },
+          {
+            "name": "voter",
+            "type": "publicKey"
+          },
+          {
+            "name": "optionIndex",
+            "type": "u8"
+          },
+          {
+            "name": "votedAt",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "Unauthorized",
+      "msg": "You are not authorized for this action"
+    },
+    {
+      "code": 6001,
+      "name": "InvalidOptionCount",
+      "msg": "Invalid number of options (must be between 2 and 4)"
+    },
+    {
+      "code": 6002,
+      "name": "InvalidEndTime",
+      "msg": "Invalid end date"
+    },
+    {
+      "code": 6003,
+      "name": "NotApprovedMember",
+      "msg": "You are not an approved member of this community"
+    },
+    {
+      "code": 6004,
+      "name": "PollNotActive",
+      "msg": "The poll is not active"
+    },
+    {
+      "code": 6005,
+      "name": "PollExpired",
+      "msg": "The poll has expired"
+    },
+    {
+      "code": 6006,
+      "name": "InvalidOptionIndex",
+      "msg": "Invalid option index"
+    },
+    {
+      "code": 6007,
+      "name": "UnauthorizedToClose",
+      "msg": "You are not authorized to close this poll"
+    },
+    {
+      "code": 6008,
+      "name": "AlreadyVoted",
+      "msg": "You have already voted for this poll"
+    }
+  ]
+}
