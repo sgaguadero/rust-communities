@@ -143,6 +143,18 @@ The frontend is built with [Vite](https://vitejs.dev/) and React.
    npm install @coral-xyz/anchor @solana/web3.js @types/node
    ```
 
+   ## Solana Program Deployment
+
+   The smart contract (Anchor program) is already deployed on the **Solana Devnet**.
+
+   - **Program Id:** `6Cy6o9mfHJkwN2VrTVGHT6Jp9rhSp88thgEJFTyw2JBi`
+   - **Deployment Signature:** [`4VCnj7AyFf5mTSRojxifebrmRHbmYxJGHngEQCebWGLqNUhrk5uLhGJqVHzVGjdYNvkEhK5sB8RHM4FSqzpNaTZB`](https://explorer.solana.com/tx/4VCnj7AyFf5mTSRojxifebrmRHbmYxJGHngEQCebWGLqNUhrk5uLhGJqVHzVGjdYNvkEhK5sB8RHM4FSqzpNaTZB?cluster=devnet)
+
+   You do **not** need to deploy the contract yourself to start using the frontend with the Devnet program. The frontend is preconfigured to interact with this deployed program.
+
+   If you want to deploy your own version, update the `programId` in the frontend code and follow the deployment steps in the Anchor documentation.
+
+
 
 
 
