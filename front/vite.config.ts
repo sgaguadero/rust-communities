@@ -17,4 +17,7 @@ export default defineConfig({
   optimizeDeps: {
     include: ['buffer'],
   },
+  css: {
+    postcss: './postcss.config.js',
+  },
 })
